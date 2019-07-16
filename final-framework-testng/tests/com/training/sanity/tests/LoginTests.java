@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+//import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -22,6 +23,7 @@ public class LoginTests {
 	private LoginPOM loginPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
+	//private Logger log;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException {
@@ -38,13 +40,10 @@ public class LoginTests {
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
 		driver.get(baseUrl);
+		//log.info("launched browser");
 	}
 	
-	@AfterMethod
-	public void tearDown() throws Exception {
-		Thread.sleep(1000);
-		driver.quit();
-	}
+	
 	@Test
 	public void validLoginTest() {
 		loginPOM.loginlinkclick();
@@ -53,4 +52,10 @@ public class LoginTests {
 		loginPOM.clickLoginBtn(); 
 		screenShot.captureScreenShot("First");
 	}
+	@AfterMethod
+	public void tearDown() throws Exception {
+		Thread.sleep(1000);
+		driver.quit();
+	}
+	
 }

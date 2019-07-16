@@ -17,6 +17,7 @@ public class RETC_018_POM
 {
 	private WebDriver driver; 
 
+
 public RETC_018_POM(WebDriver driver) {
 	this.driver = driver; 
 	PageFactory.initElements(driver, this);

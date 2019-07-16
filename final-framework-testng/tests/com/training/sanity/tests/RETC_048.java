@@ -10,9 +10,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
+//import com.relevantcodes.extentreports.ExtentReports;
+//import com.relevantcodes.extentreports.ExtentTest;
+//import com.relevantcodes.extentreports.LogStatus;
 import com.training.generics.ScreenShot;
 import com.training.pom.LoginPOM;
 import com.training.pom.TC48_PropertyPage_POM;
@@ -57,6 +57,7 @@ public class RETC_048 {
   public void properties() throws InterruptedException 
       {
 		//logger =extent.startTest("login test");
+	  
 		//logger.log(LogStatus.INFO," loggin test");
 	    loginPOM.loginlinkclick();
 		loginPOM.sendUserName("admin");

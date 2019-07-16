@@ -32,8 +32,8 @@ public class ApachePOIExcelRead {
 
 			// Get first/desired sheet from the workbook
 			XSSFSheet sheet = workbook.getSheetAt(0);
-			
-			int rowTotal = sheet.getLastRowNum();
+			//int rowTotal = sheet.getLastRowNum(); //previously it was like this
+			int rowTotal = (sheet.getLastRowNum()-1);
 
 			if ((rowTotal > 0) || (sheet.getPhysicalNumberOfRows() > 0)) {
 			    rowTotal++;
@@ -43,9 +43,10 @@ public class ApachePOIExcelRead {
 			// Iterate through each rows one by one
 			Iterator<Row> rowIterator = sheet.iterator();
 			 list1 = new String[rowTotal][2];
-			 
+			 Row row = rowIterator.next();// first it iterates from first row now it leaves header
 			while (rowIterator.hasNext()) {
-				Row row = rowIterator.next();
+				//Row row = rowIterator.next();
+				row = rowIterator.next();
 				// For each row, iterate through all the columns
 				Iterator<Cell> cellIterator = row.cellIterator();
 

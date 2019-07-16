@@ -2,6 +2,7 @@ package com.training.pom;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -32,8 +33,101 @@ public class TC48_PropertyPage_POM {
 		@FindBy(xpath="//div[@class='wp-menu-name'][contains(text(),'Properties')]")
 		private WebElement propertiesLink;
 		
+		@FindBy(xpath="//div[text()='Properties']")
+		private WebElement propertyMenuItem;
+		
 		@FindBy(xpath="//a[@class='page-title-action'][contains(text(),'Add New')]")
 		private WebElement addNewButton;
+		@FindBy(xpath="//a[@class='current'][contains(text(),'Add New')]")
+		private WebElement addNewMenuLink;
+		
+		
+		@FindBy(xpath="//div[@class='cmb-td']//textarea[@class='cmb2_textarea' and @name='_price']")
+		private WebElement priceTextArea;
+		
+		@FindBy(xpath="//div[@class='cmb-td']//input[@class='regular-text' and @name='_price_per']")
+		private WebElement pricePerSft;
+		
+		@FindBy(xpath="//a[@class ='ui-tabs-anchor' and text()='Main Details']")
+		private WebElement mainDetailsTab;
+		
+		@FindBy(xpath="//input[@id='_status']")
+		private WebElement statusInMainDetails;
+		
+		@FindBy(xpath="//input[@id='_location']")
+	    private WebElement locationInMainDetails;
+	    
+        @FindBy(xpath="//input[@id='_possession']")
+        private WebElement  possessionInMainDetails;
+        
+        @FindBy(xpath="//a[@class ='ui-tabs-anchor' and text()='Location']")
+        private WebElement locationTab;
+        
+        @FindBy(xpath="//input[@id='_friendly_address']")
+        private WebElement addressfriendly;
+        
+        
+        @FindBy(xpath="//input[@id='_address']")
+        private WebElement addressID;
+        
+        @FindBy(xpath="//input[@id='_geolocation_lat']")
+        private WebElement	geolocationLat;					
+        				
+        @FindBy(xpath="//input[@id='_geolocation_long']")
+        private WebElement	geolocationLong;							
+        
+        @FindBy(xpath="//a[@class ='ui-tabs-anchor' and text()='Details']")
+        private WebElement detailsTab;  
+        
+       @FindBy(xpath="//input[@id='_storage_room']")
+       private WebElement storageRoomText;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		@FindBy(xpath="//li//a[text()='Features']")
+		private WebElement featureMenuItem;
+		
+		@FindBy(xpath="//input[@name='tag-name' and @type='text']")
+		private WebElement nameTextBox;
+		
+		@FindBy(xpath="//input[@name='slug' and @id='tag-slug']")
+		private WebElement slugTextBox;
+		
+		
+		@FindBy(xpath="//select[@name='parent' and @id='parent']")
+		private WebElement parentFeatureSelection;
+		
+		
+		
+		@FindBy(xpath="//textarea[@name='description' and @id='tag-description']")
+		private WebElement descriptionTextArea;
+		
+		
+		
+		
+		@FindBy(id="submit")
+		private WebElement addNewFeatureBtn;
+		
+		
+		
+		
+		
 		
 		
 		@FindBy(xpath="//div//a[@id='region-add-toggle'][contains(text(),'Add New Region')]")
@@ -94,6 +188,52 @@ public class TC48_PropertyPage_POM {
 		public void propertiesLinkclick() {
 			this.propertiesLink.click(); 
 		}
+		public void propertyMenuItemClick() {
+			Actions act = new Actions(driver);
+			act.moveToElement(this.propertyMenuItem).build().perform();
+			
+			//this.propertyMenuItem.click(); 
+		}
+		
+		
+		public void featuresMenuItemLinkclick() {
+			Actions act = new Actions(driver);
+			act.moveToElement(this.featureMenuItem).click().build().perform();
+			//this.featureMenuItem.click(); 
+		}
+		public void nameTextBoxEnterValue(String nameTextBox) {
+			this.nameTextBox.clear();
+			this.nameTextBox.sendKeys(nameTextBox);
+			}
+		public void slugTextBoxEnterValue(String slugTextBox) {
+			this.slugTextBox.clear();
+			this.slugTextBox.sendKeys(slugTextBox);
+			}
+		
+		public void parentFeatureSelectionDropdown(String parentRegion) {
+		       Select pp = new Select(this.parentFeatureSelection);
+				pp.selectByVisibleText(parentRegion);
+			}
+	
+		public void descriptionTextAreaEnter(String descriptionTextArea) {
+			this.slugTextBox.clear();
+			this.slugTextBox.sendKeys(descriptionTextArea);
+			}
+		public void addNewfeatureButtonClick() {
+			this.addNewFeatureBtn.click(); 
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		public void addNewButtonclick() {
 			this.addNewButton.click(); 

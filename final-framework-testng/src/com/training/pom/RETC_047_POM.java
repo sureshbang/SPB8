@@ -112,7 +112,8 @@ public class RETC_047_POM {
 	  
 	  } 
 	  
-	  public void publishButtonClick() { driver.switchTo().defaultContent();
+	  public void publishButtonClick() { 
+		  driver.switchTo().defaultContent();
 	  JavascriptExecutor js = (JavascriptExecutor)driver;
 	  js.executeScript("window.scrollTo(0, -document.body.scrollHeight)");
 	  this.publishButton.click();

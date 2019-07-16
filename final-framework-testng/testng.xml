@@ -10,6 +10,7 @@
          <class name = "com.training.sanity.tests.RETC_018" />
          <class name = "com.training.sanity.tests.RETC_019" />
          <class name = "com.training.sanity.tests.RETC_020" />
+         <class name = "com.training.sanity.tests.RETC_046" />
       </classes>
    </test>
 </suite>	

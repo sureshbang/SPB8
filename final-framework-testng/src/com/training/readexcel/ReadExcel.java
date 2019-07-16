@@ -32,7 +32,7 @@ public class ReadExcel {
 					for (int j=0; j < totalNoOfCols; j++) 
 					{
 						arrayExcelData[i-1][j] = sh.getCell(j, i).getContents();
-					}
+						
 				}
 			}catch (IOException | BiffException e) 
 			{

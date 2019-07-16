@@ -1,0 +1,116 @@
+package com.training.sanity.tests;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import com.training.generics.ScreenShot;
+import com.training.pom.LoginPOM;
+import com.training.pom.UsersPageRETC_76_POM;
+import com.training.utility.DriverFactory;
+import com.training.utility.DriverNames;
+
+public class RETC_76 {
+	
+	//static final logger log= new logger(RETC_048.class);
+		private WebDriver driver;
+		private String baseUrl;
+		private LoginPOM loginPOM;
+		private static Properties properties;
+		//private ScreenShot screenShot;
+		//private TC48_PropertyPage_POM TC48_PropertyPage_POM;
+		//private static ExtentReports extent;
+		//private ExtentTest logger;
+		//private RETC_047_POM RETC_047_POM;
+		private UsersPageRETC_76_POM UsersPageRETC_76_POM;
+
+		@BeforeClass
+		public static void setUpBeforeClass() throws IOException {
+			properties = new Properties();
+			FileInputStream inStream = new FileInputStream("./resources/others.properties");
+			properties.load(inStream);
+			//extent = new ExtentReports("C:\\JAVA\\Selenium\\Project\\RETC_048\\RETC_048.html");
+			
+		}
+
+		@BeforeMethod
+		public void setUp() throws Exception {
+			driver = DriverFactory.getDriver(DriverNames.CHROME);
+			loginPOM = new LoginPOM(driver); 
+			//TC48_PropertyPage_POM = new TC48_PropertyPage_POM(driver);
+			UsersPageRETC_76_POM = new UsersPageRETC_76_POM(driver);
+			baseUrl = properties.getProperty("baseURL");
+			//screenShot = new ScreenShot(driver); 
+			// open the browser 
+			driver.get(baseUrl);
+		}
+		
+		
+		
+	  @Test
+	  public void userCreation() throws InterruptedException 
+	      {
+			//logger =extent.startTest("login test");
+			//logger.log(LogStatus.INFO," loggin test");
+		    loginPOM.loginlinkclick();
+			loginPOM.sendUserName("admin");
+			//logger.log(LogStatus.PASS," Username entered");
+			loginPOM.sendPassword("adminuser@12345");
+			loginPOM.clickLoginBtn(); 
+			//logger.log(LogStatus.PASS," Logged in correctly");
+			//screenShot.captureScreenShot("TC76");
+			
+			//Thread.sleep(4000);
+			String a =driver.getTitle();
+			System.out.println(a);
+			UsersPageRETC_76_POM.userLinkClick();
+			System.out.println("clicked users");
+			UsersPageRETC_76_POM.addNewclick();
+			
+			UsersPageRETC_76_POM.newUserName("suresh");
+			UsersPageRETC_76_POM.newFirstName("Suraa");
+			UsersPageRETC_76_POM.newLastName("sonnaaa");
+			UsersPageRETC_76_POM.newEmail("ss@m99.com");
+		    UsersPageRETC_76_POM.newURL("google.com");
+		    UsersPageRETC_76_POM.showPasswordBtn();
+		    UsersPageRETC_76_POM.newPassword("Sure99h@!1224");
+		   // UsersPageRETC_76_POM.weakPasswordClick();
+		    UsersPageRETC_76_POM.hideButton();
+		    UsersPageRETC_76_POM.cancelButton();
+		    UsersPageRETC_76_POM.roleSelectBox();
+		    Thread.sleep(4000);
+		    UsersPageRETC_76_POM.newUserCreateButtonClick();
+		    Thread.sleep(4000);
+		    UsersPageRETC_76_POM.newUserCreatedMsg();
+		    
+		    String before = "//a[contains(text(),'";		    
+		    String after = "')]";		    
+		    String username1 = "suresh";
+		    		
+		    WebElement a1 = driver.findElement(By.xpath(before+username1+after));
+		    
+		   	String b1=a1.getText();
+		   	Assert.assertEquals(username1,b1);
+		   	System.out.println("pass 76");
+					  
+			  
+			
+			
+	      }
+		    
+		  
+	      
+	  @AfterMethod
+		public void tearDown() throws Exception {
+			Thread.sleep(1000);
+			driver.quit();
+	                   }
+	}

@@ -5,8 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import common.Logger;
+
 public class LoginPOM {
 	private WebDriver driver; 
+	
+	Logger log = Logger.getLogger(LoginPOM.class);
 	
 	public LoginPOM(WebDriver driver) {
 		this.driver = driver; 
